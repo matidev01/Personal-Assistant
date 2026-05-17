@@ -8,7 +8,16 @@ const accountRoutes = require('./routes/accountRoutes');
 const app = express();
 
 // Middleware
-app.use(cors());
+app.use(cors({
+  origin: [
+    'http://localhost:3000',
+    'https://vault-manager-frotend.vercel.app',
+    'https://vault-manager-frotend.vercel.app/'
+  ],
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization']
+}));
 app.use(express.json());
 
 const incomeRoutes = require('./routes/incomeRoutes');
